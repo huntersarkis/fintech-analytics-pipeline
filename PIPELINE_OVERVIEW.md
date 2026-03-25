@@ -83,5 +83,4 @@ fintech-analytics-pipeline/
 ## Author
 
 Hunter Sarkis
-Grand Canyon University — M.S. in Business Analytics
 Analytics Engineer
