@@ -4,7 +4,7 @@ import os
 import random
 from datetime import datetime, timedelta
 
-# ── CONFIGURATION ─────────────────────────────────────────────────────────────
+# Configuration
 random.seed(42)
 np.random.seed(42)
 
@@ -13,7 +13,7 @@ NUM_TRANSACTIONS = 10000
 START_DATE = datetime(2023, 1, 1)
 END_DATE = datetime(2024, 12, 31)
 
-# ── REFERENCE DATA ────────────────────────────────────────────────────────────
+# Reference data
 CATEGORIES = ["Food & Dining", "Shopping", "Travel", "Entertainment",
               "Healthcare", "Utilities", "Income", "Transfer"]
 
@@ -32,7 +32,7 @@ ACQUISITION_CHANNELS = ["organic", "referral", "paid_social", "paid_search", "in
 ACCOUNT_TYPES = ["checking", "savings", "premium"]
 US_STATES = ["CA", "NY", "TX", "FL", "WA", "IL", "MA", "CO", "GA", "AZ"]
 
-# ── GENERATE USERS ─────────────────────────────────────────────────────────────
+# Generate users
 def generate_users(n):
     users = []
     for i in range(1, n + 1):
@@ -49,7 +49,7 @@ def generate_users(n):
         })
     return pd.DataFrame(users)
 
-# ── GENERATE TRANSACTIONS ──────────────────────────────────────────────────────
+#  Generate transactions
 def generate_transactions(users_df, n):
     transactions = []
     for i in range(1, n + 1):
@@ -78,7 +78,7 @@ def generate_transactions(users_df, n):
         })
     return pd.DataFrame(transactions)
 
-# ── GENERATE ACCOUNT BALANCES ──────────────────────────────────────────────────
+# Generate account balances
 def generate_balances(users_df):
     balances = []
     for _, user in users_df.iterrows():
@@ -92,7 +92,7 @@ def generate_balances(users_df):
         })
     return pd.DataFrame(balances)
 
-# ── SAVE TO CSV ────────────────────────────────────────────────────────────────
+# Save to CSV
 def main():
     os.makedirs("data/raw", exist_ok=True)
 
