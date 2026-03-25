@@ -1,0 +1,4 @@
+risk_segment,total_users,avg_credit_score,avg_balance,avg_overdrafts
+medium_risk,283,690.0,25943.03,0.79
+low_risk,196,777.0,24815.01,0.0
+high_risk,21,612.0,28250.79,2.29
