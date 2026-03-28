@@ -1,14 +1,15 @@
 -- Staging model: users
 -- Cleans and standardizes raw user data
--- Source: BigQuery raw_users table
+-- Source: seeds/users.csv
 
 with source as (
-    select * from {{ source('fintech_raw', 'raw_users') }}
+    select * from {{ ref('users') }}
 ),
 
 staged as (
     select
         user_id,
+        lower(trim(name)) as name,
         lower(trim(email)) as email,
         lower(trim(state)) as state,
         lower(trim(account_type)) as account_type,
