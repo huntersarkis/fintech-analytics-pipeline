@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: stg_users
+    description: "Cleaned and standardized user data from seeds"
+    columns:
+      - name: user_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "User email address"
+        tests:
+          - not_null
+
+  - name: stg_transactions
+    description: "Cleaned and standardized transaction data from seeds"
+    columns:
+      - name: transaction_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "Foreign key to stg_users"
+        tests:
+          - not_null
+
+  - name: stg_account_balances
+    description: "Cleaned and standardized account balance data from seeds"
+    columns:
+      - name: user_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_users
+    description: "One row per user with account attributes and risk segment"
+    columns:
+      - name: user_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: risk_segment
+        description: "Derived risk classification: low, medium, or high"
+
+  - name: fct_transactions
+    description: "One row per transaction enriched with user attributes"
+    columns:
+      - name: transaction_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_monthly_spending
+    description: "Aggregated monthly spend by user, category, and channel"
+    columns:
+      - name: spending_month
+        description: "First day of the month for the aggregation period"
+        tests:
+          - not_null
